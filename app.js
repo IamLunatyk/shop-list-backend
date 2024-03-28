@@ -4,12 +4,17 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./connect.js");
+const path = require("path"); // Dodaj import modułu 'path'
 const app = express();
 
 console.log("Working");
 
 app.use(express.static(__dirname + "/public"));
+
+// Ustawienie ścieżki do katalogu z widokami
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 app.use(morgan("tiny"));
 app.use(
   bodyParser.urlencoded({
